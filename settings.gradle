@@ -1,0 +1,3 @@
+rootProject.name = 'bitcoin-spring-boot-starter-example-app'
+
+include 'app'
