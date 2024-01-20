@@ -84,3 +84,7 @@ Start the application with
 ## License
 
 The project is licensed under the Apache License. See [LICENSE](LICENSE) for details.
+
+[lnpass_homepage]: https://lnpass.github.io
+[simple_bitcoin_wallet_github]: https://github.com/btcontract/wallet/
+[ngrok_homepage]: https://ngrok.com/
