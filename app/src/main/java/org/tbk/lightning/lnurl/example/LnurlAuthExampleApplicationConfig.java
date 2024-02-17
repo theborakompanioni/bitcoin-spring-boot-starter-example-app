@@ -16,6 +16,7 @@ import org.tbk.lightning.lnurl.example.domain.WalletUserService;
 import org.tbk.lightning.lnurl.example.security.LnurlAuthPairingServiceImpl;
 import org.tbk.lightning.lnurl.example.security.UserDetailsServiceImpl;
 import org.tbk.lnurl.auth.*;
+import org.tbk.spring.lnurl.security.userdetails.LnurlAuthUserPairingService;
 import org.tbk.tor.hs.HiddenServiceDefinition;
 
 import java.net.URI;
@@ -48,7 +49,7 @@ class LnurlAuthExampleApplicationConfig {
                 .or(() -> applicationHiddenServiceDefinition.flatMap(this::buildOnionUrl))
                 .orElseThrow(() -> {
                     String errorMessage = "Cannot build lnurl-auth callback base url. "
-                            + "Please enable tor or provide an `app.lnurl-auth-base-url` property. ";
+                                          + "Please enable tor or provide an `app.lnurl-auth-base-url` property. ";
                     return new IllegalStateException(errorMessage);
                 });
 
@@ -70,7 +71,7 @@ class LnurlAuthExampleApplicationConfig {
     }
 
     @Bean
-    LnurlAuthPairingService lnurlAuthSecurityService(WalletUserService walletUserService) {
+    LnurlAuthUserPairingService lnurlAuthUserPairingService(WalletUserService walletUserService) {
         return new LnurlAuthPairingServiceImpl(walletUserService);
     }
 

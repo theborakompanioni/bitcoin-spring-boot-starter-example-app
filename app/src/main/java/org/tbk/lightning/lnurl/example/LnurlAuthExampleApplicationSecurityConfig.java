@@ -18,8 +18,8 @@ import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 import org.tbk.lnurl.auth.K1Manager;
 import org.tbk.lnurl.auth.LnurlAuthFactory;
-import org.tbk.lnurl.auth.LnurlAuthPairingService;
 import org.tbk.spring.lnurl.security.LnurlAuthConfigurer;
+import org.tbk.spring.lnurl.security.userdetails.LnurlAuthUserPairingService;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -53,7 +53,7 @@ class LnurlAuthExampleApplicationSecurityConfig implements WebSecurityCustomizer
     private final K1Manager lnurlAuthk1Manager;
 
     @NonNull
-    private final LnurlAuthPairingService lnurlAuthPairingService;
+    private final LnurlAuthUserPairingService lnurlAuthUserPairingService;
 
     @NonNull
     private final UserDetailsService userDetailsService;
@@ -106,9 +106,8 @@ class LnurlAuthExampleApplicationSecurityConfig implements WebSecurityCustomizer
                  * This should demonstrate the ability of creating more customized setups.
                  */
                 .with(new LnurlAuthConfigurer(), it -> it.k1Manager(lnurlAuthk1Manager)
-                        .pairingService(lnurlAuthPairingService)
+                        .pairingService(lnurlAuthUserPairingService)
                         .lnurlAuthFactory(lnurlAuthFactory)
-                        .authenticationUserDetailsService(userDetailsService)
                         .loginPageEndpoint(login -> login
                                 .enable(true)
                                 .baseUri(lnurlAuthLoginPagePath())
