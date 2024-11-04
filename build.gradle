@@ -13,7 +13,6 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootGradlePluginVersion}")
-        classpath("com.google.protobuf:protobuf-gradle-plugin:${protobufGradleVersion}")
 
         // some example projects use jmolecules which allows syntactic sugar via bytebuddy
         // bytebuddy plugin is disabled by default and must be manually enabled via
@@ -149,8 +148,6 @@ subprojects {
 
     jar {
         exclude('*-local.yml')
-        exclude('**/mainnet/**')
-        exclude('**/*.proto')
 
         includeEmptyDirs false
     }
@@ -185,8 +182,6 @@ subprojects {
             archiveClassifier.set('boot')
 
             exclude('*-local.yml')
-            exclude('**/mainnet/**')
-            exclude('**/*.proto')
 
             includeEmptyDirs false
             duplicatesStrategy DuplicatesStrategy.FAIL
@@ -341,4 +336,3 @@ subprojects {
         ]
     }
 }
-
